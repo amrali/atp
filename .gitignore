@@ -17,4 +17,4 @@ nosetests.xml
 *.py[cod]
 
 # Development artifacts
-venv
+venv*
