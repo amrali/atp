@@ -1,0 +1,20 @@
+# Packaging artifacts
+*.egg
+*.egg-info
+*.gz
+dist
+build
+eggs
+sdist
+MANIFEST
+
+# Unit test artifacts
+.coverage
+.tox
+nosetests.xml
+
+# Runtime artifacts
+*.py[cod]
+
+# Development artifacts
+venv
