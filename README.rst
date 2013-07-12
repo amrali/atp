@@ -46,13 +46,14 @@ class manually and pass it to the thread-pool or use the helper functions.
     import atp
 
     # Create a task manually.
+    # The ``args`` and ``kwargs`` are the arguments and keyword arguments passed
+    # to the target functions.
     task = atp.Task(target=<callable>, success=<callable>, args=(1,2,3,),
         kwargs={'a':1, 'b':2})
     atp.GlobalThreadPool().run(task)
 
     # Run a task through helpers. Note that you can pass your own local thread-pool
-    # to the helper function through the ``pool`` argument. The ``args`` and ``kwargs``
-    # are the arguments and keyword arguments passed to the target functions.
+    # to the helper function through the ``pool`` argument.
     task = atp.async_call(<callable>, 1, 2, 3, a=1, b=2, success=<callable>,
         pool=atp.GlobalThreadPool())
 
@@ -109,10 +110,10 @@ caught and logged.
     logging.getLogger().addHandler(logging.StreamHandler())
 
     def will_fail():
-        throw RuntimeError("fake error")
+        raise RuntimeError("fake error")
 
     def catch_fail(error):
-        throw error.exception, error.message, error.traceback
+        raise error.exception, error.message, error.traceback
 
     atp.GlobalThreadPool()
     task = atp.async_call(will_fail, failure=catch_fail)
